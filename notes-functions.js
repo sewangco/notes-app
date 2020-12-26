@@ -12,6 +12,7 @@ const getSavedNotes= function (){
 
 const saveNotes = function(notes){
     localStorage.setItem('notes', JSON.stringify(notes))
+    
 }
 
 // Remove a note from the list 
@@ -28,7 +29,7 @@ const removeNote = function(id){
 
 const generateNoteDOM= function (note){
     const noteEl = document.createElement('div')
-    const textEl= document.createElement('span')
+    const textEl= document.createElement('a')
     const button = document.createElement('button')
 
     // Setup the remove note button
@@ -46,7 +47,9 @@ const generateNoteDOM= function (note){
     }else {
         textEl.textContent= 'Unnamed note'
     }
+    textEl.setAttribute('href',`/edit.html#${note.id}`)
     noteEl.appendChild(textEl)
+    
     
     return noteEl 
 }
